@@ -1,33 +1,18 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="mx-auto max-w-6xl px-6 py-20">
-      <p className="text-xs tracking-[0.35em] text-white/60">PHOTOGRAPHY</p>
+    <main className="fork">
+      <div className="fork__wrap" aria-label="Choose section">
+        <Link className="fork__link" href="/works">
+  <span className="fork__label fork__label--works">Works</span>
+</Link>
 
-      <h1 className="mt-4 text-4xl md:text-6xl font-semibold leading-tight">
-        {site.tagline}
-      </h1>
+        <div className="fork__divider" aria-hidden="true" />
 
-      <p className="mt-6 max-w-xl text-white/70">{site.description}</p>
-
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Link
-          href="/portfolio"
-          className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950"
-        >
-          View Portfolio
-        </Link>
-
-        <a
-          href={site.bookingUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full border border-white/20 px-6 py-3 text-sm text-center"
-        >
-          Book
-        </a>
+        <Link className="fork__link" href="/photography">
+  <span className="fork__label fork__label--photo">Photography</span>
+</Link>
       </div>
     </main>
   );

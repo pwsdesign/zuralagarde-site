@@ -1,5 +1,5 @@
 export const site = {
-  name: "CLIENT NAME",
+  name: "Zura Lagarde",
   locationLine: "Miami • Travel • Studio",
   tagline: "Timeless imagery with a modern edge.",
   description: "Photography portfolio and bookings.",

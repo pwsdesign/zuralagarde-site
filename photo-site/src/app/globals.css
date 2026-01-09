@@ -1,17 +1,31 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Adobe font family names */
+:root{
+  --font-works: "pinot-grigio-modern", sans-serif;
+  --font-photo: "acumin-variable", sans-serif;
+
+  --font-display: var(--font-works);
+  --font-body: var(--font-photo);
+
+  --background: #f6f1e6;
+  --foreground: #111111;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1, h2, h3 {
+  font-family: var(--font-display);
 }
 
+/* ONE body rule only */
+body {
+  font-family: var(--font-body);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Optional dark mode override */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +33,92 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 360ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeUp {
+    animation: none;
+  }
+}
+
+/* Fork page layout (this is what centers it) */
+.fork{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+
+.fork__wrap{
+  display: grid;
+  gap: 18px;
+  text-align: center;
+}
+
+.fork__link{
+  text-decoration: none;
+  color: inherit;
+  padding: 20px 16px;
+  border-radius: 20px;
+}
+
+.fork__divider{
+  height: 1px;
+  width: min(280px, 70vw);
+  margin: 0 auto;
+  opacity: 0.18;
+  background: currentColor;
+}
+
+/* Make labels animatable */
+.fork__label{
+  display: inline-block;
+  font-size: clamp(44px, 7vw, 84px);
+  line-height: 1.05;
+  letter-spacing: 0.015em;
+}
+
+/* WORKS: stable museum feel */
+.fork__label--works{
+  font-family: "pinot-grigio-modern", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wght" 320,
+    "wdth" var(--wdth);
+}
+
+.fork__link:hover .fork__label--works{
+  transition: --wdth 380ms ease, letter-spacing 380ms ease;
+  font-stretch: 100%;
+  opacity: 0.7;
+  letter-spacing: 0.2em; /* optional, makes the expansion feel intentional */
+}
+
+.fork__label--photo{
+  font-family: "acumin-variable", sans-serif;
+  font-variation-settings:
+    "slnt" 0,
+    "wght" 320,
+    "wdth" var(--wdth);
+}
+
+/* Hover expands width */
+.fork__link:hover .fork__label--photo{
+  transition: --wdth 380ms ease, letter-spacing 380ms ease;
+  font-stretch: 100%;
+  opacity: 0.7;
+  letter-spacing: 0.2em; /* optional, makes the expansion feel intentional */
+}
+
+.works-body{
+  font-family: "source-sans-3", sans-serif;
 }
