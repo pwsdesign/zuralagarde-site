@@ -1,28 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Adobe font family names */
-:root{
-  --font-works: "pinot-grigio-modern", sans-serif;
-  --font-photo: "acumin-variable", sans-serif;
+/* -----------------------------
+   GLOBAL TOKENS + FONTS
+------------------------------ */
+:root {
+  /* Adobe font family names (must exist in your Adobe kit) */
+  --font-works: "pinot-grigio-modern", serif;   /* Works label on fork */
+  --font-photo: "acumin-variable", sans-serif;  /* Photography label + body */
 
+  /* Typography mapping */
   --font-display: var(--font-works);
   --font-body: var(--font-photo);
 
+  /* Site colors */
   --background: #f6f1e6;
   --foreground: #111111;
-}
 
-h1, h2, h3 {
-  font-family: var(--font-display);
-}
-
-/* ONE body rule only */
-body {
-  font-family: var(--font-body);
-  background: var(--background);
-  color: var(--foreground);
+  /* Variable width behavior for Acumin (used via font-stretch fallback) */
+  --photo-stretch: 90%;
+  --photo-stretch-hover: 105%;
 }
 
 /* Optional dark mode override */
@@ -33,9 +29,73 @@ body {
   }
 }
 
+/* -----------------------------
+   BASELINE / RESETS
+------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Headings use display font */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+/* Links: keep clean by default */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Forms should not look like 2008 */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/* If you want lists clean everywhere */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* -----------------------------
+   ANIMATION
+------------------------------ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeUp {
@@ -48,77 +108,89 @@ body {
   }
 }
 
-/* Fork page layout (this is what centers it) */
-.fork{
+/* -----------------------------
+   FORK PAGE (HOME)
+------------------------------ */
+.fork {
   min-height: 100vh;
   display: grid;
   place-items: center;
   padding: 40px;
 }
 
-.fork__wrap{
+.fork__wrap {
   display: grid;
-  gap: 18px;
+  gap: 22px;
   text-align: center;
 }
 
-.fork__link{
+.fork__link {
+  display: inline-block;
+  padding: 18px 16px;
+  border-radius: 20px;
   text-decoration: none;
   color: inherit;
-  padding: 20px 16px;
-  border-radius: 20px;
 }
 
-.fork__divider{
+.fork__divider {
   height: 1px;
-  width: min(280px, 70vw);
+  width: min(340px, 70vw);
   margin: 0 auto;
   opacity: 0.18;
   background: currentColor;
 }
 
-/* Make labels animatable */
-.fork__label{
+.fork__label {
   display: inline-block;
-  font-size: clamp(44px, 7vw, 84px);
-  line-height: 1.05;
+  font-size: clamp(46px, 7vw, 92px);
+  line-height: 1.02;
   letter-spacing: 0.015em;
+  transition: opacity 320ms ease, letter-spacing 320ms ease, transform 320ms ease, font-weight 320ms ease;
 }
 
-/* WORKS: stable museum feel */
+/* WORKS label */
 .fork__label--works{
-  font-family: "pinot-grigio-modern", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-family: "gyst-variable", sans-serif;
   font-variation-settings:
-    "slnt" 0,
-    "wght" 320,
-    "wdth" var(--wdth);
+    "wght" 420,
+    "wdth" 90,
+    "slnt" 0;
+  letter-spacing: 0.08em;
 }
 
+/* Works hover: lighter weight look (if font supports it), otherwise subtle opacity */
 .fork__link:hover .fork__label--works{
-  transition: --wdth 380ms ease, letter-spacing 380ms ease;
-  font-stretch: 100%;
-  opacity: 0.7;
-  letter-spacing: 0.2em; /* optional, makes the expansion feel intentional */
-}
-
-.fork__label--photo{
-  font-family: "acumin-variable", sans-serif;
   font-variation-settings:
-    "slnt" 0,
-    "wght" 320,
-    "wdth" var(--wdth);
+    "wght" 300,
+    "wdth" 100,
+    "slnt" 0;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  transition: font-variation-settings 360ms ease, letter-spacing 360ms ease, opacity 360ms ease;
 }
 
-/* Hover expands width */
-.fork__link:hover .fork__label--photo{
-  transition: --wdth 380ms ease, letter-spacing 380ms ease;
-  font-stretch: 100%;
-  opacity: 0.7;
-  letter-spacing: 0.2em; /* optional, makes the expansion feel intentional */
+/* PHOTOGRAPHY label */
+.fork__label--photo {
+  font-family: var(--font-photo);
+  /* Acumin variable: weight/slant if supported */
+  font-variation-settings: "slnt" 0, "wght" 320;
 }
 
-.works-body{
+/* Photography hover: try font-stretch (if supported), otherwise scaleX fallback */
+.fork__link:hover .fork__label--photo {
+  opacity: 0.75;
+  letter-spacing: 0.03em;
+  font-stretch: var(--photo-stretch-hover);
+}
+
+/* Fallback if font-stretch does nothing */
+@supports not (font-stretch: 110%) {
+  .fork__link:hover .fork__label--photo {
+    transform: scaleX(1.06);
+  }
+}
+
+/* Optional: route-specific body font if you apply className="works-body" somewhere */
+.works-body {
   font-family: "source-sans-3", sans-serif;
 }

@@ -5,14 +5,14 @@ export default function Home() {
     <main className="fork">
       <div className="fork__wrap" aria-label="Choose section">
         <Link className="fork__link" href="/works">
-  <span className="fork__label fork__label--works">Works</span>
-</Link>
+          <span className="fork__label fork__label--works">Works</span>
+        </Link>
 
         <div className="fork__divider" aria-hidden="true" />
 
         <Link className="fork__link" href="/photography">
-  <span className="fork__label fork__label--photo">Photography</span>
-</Link>
+          <span className="fork__label fork__label--photo">Photography</span>
+        </Link>
       </div>
     </main>
   );
