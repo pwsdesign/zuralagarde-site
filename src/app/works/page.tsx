@@ -7,7 +7,7 @@ export default function WorksPage() {
       years: "2024",
       medium: "Photography, video",
       href: "/works/elretorno",
-      videoSrc: "/projects/elretorno/elretorno.mov",
+      videoSrc: "/projects/elretorno/elretorno.mp4",
     },
     { title: "Dias de Luna", years: "2021–" },
     { title: "Mitología de la Tangente", years: "2020" },
