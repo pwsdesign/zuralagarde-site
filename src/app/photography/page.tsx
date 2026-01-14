@@ -5,39 +5,34 @@ import { site } from "@/lib/site";
 const services = [
   {
     title: "Portraits",
-    desc: "Natural, intimate portraits with film-like color and soft grain.",
     href: "/photography/portraits",
-    tag: "Most requested",
+    tag: "",
   },
   {
     title: "Couples",
-    desc: "Quiet moments, movement, and honest connection—no stiff posing.",
     href: "/photography/couples",
-    tag: "Story-driven",
+    tag: "",
   },
   {
-    title: "Brands",
-    desc: "Editorial visuals for founders, creatives, products, and campaigns.",
-    href: "/contact",
-    tag: "Commercial",
-  },
-  {
-    title: "Weddings",
-    desc: "Documentary coverage with warmth, texture, and timeless tone.",
-    href: "/contact",
-    tag: "Limited dates",
+    title: "Musicians",
+    href: "/photography/musicians",
+    tag: "",
   },
   {
     title: "Travel",
-    desc: "On-location sessions and destination storytelling.",
     href: "/contact",
-    tag: "Miami + beyond",
+    tag: "",
   },
   {
     title: "Events",
-    desc: "Atmosphere-first coverage for gatherings, launches, and dinners.",
     href: "/contact",
-    tag: "Select only",
+    tag: "",
+  },
+  {
+    title: "Weddings",
+    desc: "Limited availability.",
+    href: "/contact?service=weddings",
+    tag: "",
   },
 ];
 
@@ -90,6 +85,21 @@ const couples = [
   "litus1.jpg",
 ];
 
+const musicians = [
+  "Brayant_Anama_banda-11.jpg",
+  "Brayant_Anama_banda-3.jpg",
+  "Litus_javi_banda-109.jpg",
+  "Litus_javi_banda-145.jpg",
+  "Litus_javi_banda-92.jpg",
+  "amychicoguitarra-9.jpg",
+  "brothersofothers-16.jpg",
+  "brothersofothers-7.jpg",
+  "litus_ACE_metales-15.jpg",
+  "litus_ACE_metales-35.jpg",
+  "litus_ACE_metales-36.jpg",
+  "litus_ACE_metales-45.jpg",
+];
+
 const labelFromFile = (file: string) =>
   file
     .replace(".jpg", "")
@@ -100,6 +110,8 @@ const labelFromFile = (file: string) =>
 export default function PhotographyPage() {
   const portraitPreview = "Eyla1.jpg";
   const couplesPreview = "litus1.jpg";
+  const musiciansPreview = "Brayant_Anama_banda-11.jpg";
+  const weddingsPreview = "wedding1.jpg";
 
   return (
     <main className="photo-page mx-auto max-w-6xl px-6 py-16 md:py-24 space-y-16">
@@ -176,14 +188,9 @@ export default function PhotographyPage() {
                 <Link
                   key={s.title}
                   href={s.href}
-                  className="photo-card photo-card--portraits photo-stagger"
+                  className="photo-card photo-card--portraits photo-card--exclusive photo-stagger"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
-                  <div className="photo-card__top">
-                    <p className="photo-card__tag">{s.tag}</p>
-                    <span className="photo-card__arrow">→</span>
-                  </div>
-
                   <h3 className="photo-card__title">{s.title}</h3>
                   <p className="photo-card__desc">{s.desc}</p>
 
@@ -196,6 +203,7 @@ export default function PhotographyPage() {
                         height={680}
                         className="photo-card__preview-image"
                       />
+                      <span className="photo-card__arrow">→</span>
                     </div>
                   )}
                 </Link>
@@ -210,11 +218,6 @@ export default function PhotographyPage() {
                   className="photo-card photo-card--portraits photo-stagger"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
-                  <div className="photo-card__top">
-                    <p className="photo-card__tag">{s.tag}</p>
-                    <span className="photo-card__arrow">→</span>
-                  </div>
-
                   <h3 className="photo-card__title">{s.title}</h3>
                   <p className="photo-card__desc">{s.desc}</p>
 
@@ -227,6 +230,62 @@ export default function PhotographyPage() {
                         height={680}
                         className="photo-card__preview-image"
                       />
+                      <span className="photo-card__arrow">→</span>
+                    </div>
+                  )}
+                </Link>
+              );
+            }
+
+            if (s.title === "Musicians") {
+              return (
+                <Link
+                  key={s.title}
+                  href={s.href}
+                  className="photo-card photo-card--portraits photo-stagger"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <h3 className="photo-card__title">{s.title}</h3>
+                  <p className="photo-card__desc">{s.desc}</p>
+
+                  {musiciansPreview && (
+                    <div className="photo-card__preview">
+                      <Image
+                        src={`/musicians/${musiciansPreview}`}
+                        alt={`${labelFromFile(musiciansPreview)} musicians preview`}
+                        width={520}
+                        height={680}
+                        className="photo-card__preview-image"
+                      />
+                      <span className="photo-card__arrow">→</span>
+                    </div>
+                  )}
+                </Link>
+              );
+            }
+
+            if (s.title === "Weddings") {
+              return (
+                <Link
+                  key={s.title}
+                  href={s.href}
+                  className="photo-card photo-card--portraits photo-card--exclusive photo-stagger"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <h3 className="photo-card__title">{s.title}</h3>
+                  <p className="photo-card__desc">{s.desc}</p>
+
+                  {weddingsPreview && (
+                    <div className="photo-card__preview">
+                      <span className="photo-card__exclusive">Exclusive by request</span>
+                      <Image
+                        src={`/weddings/${weddingsPreview}`}
+                        alt="Wedding preview"
+                        width={520}
+                        height={680}
+                        className="photo-card__preview-image"
+                      />
+                      <span className="photo-card__arrow">→</span>
                     </div>
                   )}
                 </Link>
@@ -240,13 +299,9 @@ export default function PhotographyPage() {
                 className="photo-card photo-stagger"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
-                <div className="photo-card__top">
-                  <p className="photo-card__tag">{s.tag}</p>
-                  <span className="photo-card__arrow">→</span>
-                </div>
-
                 <h3 className="photo-card__title">{s.title}</h3>
                 <p className="photo-card__desc">{s.desc}</p>
+                <span className="photo-card__arrow">→</span>
 
                 <div className="photo-card__glow" aria-hidden="true" />
               </Link>

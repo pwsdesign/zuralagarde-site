@@ -1,6 +1,14 @@
 import { site } from "@/lib/site";
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams?: {
+    service?: string;
+  };
+};
+
+export default function ContactPage({ searchParams }: ContactPageProps) {
+  const isWeddingRequest = searchParams?.service === "weddings";
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-16 md:py-24 space-y-10">
       <header className="space-y-4">
@@ -10,6 +18,22 @@ export default function ContactPage() {
           For bookings, collaborations, press, or exhibition inquiries, send a note. Include location, timeline,
           and a short description of what you’re envisioning.
         </p>
+
+        {isWeddingRequest && (
+          <div className="rounded-3xl bg-white/70 ring-1 ring-black/10 p-5 text-sm text-black/70">
+            <p className="font-medium text-black/80">
+              Weddings are exclusive and by request only.
+            </p>
+            <p className="mt-2 leading-relaxed">
+              I accept a limited number of wedding commissions each year. If the date, location, and vision align,
+              I’ll share additional galleries and availability details. Please note that submitting a request does
+              not guarantee availability.
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-[0.35em] text-black/45">
+              Request access + availability
+            </p>
+          </div>
+        )}
       </header>
 
       <section className="rounded-3xl bg-white/35 ring-1 ring-black/10 p-8 md:p-10 space-y-6">
