@@ -30,6 +30,7 @@ const portraits = [
   "kelly4.jpg",
   "kelly5.jpg",
   "kelly6.jpg",
+  "Tete&Jesus-13.jpg",
 ];
 
 const labelFromFile = (file: string) =>

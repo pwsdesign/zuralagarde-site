@@ -12,7 +12,6 @@ const couples = [
   "Melissa&AlexWEDDING-563.jpg",
   "Melissa&AlexWEDDING-720.jpg",
   "Melissa&AlexWEDDING-89.jpg",
-  "Tete&Jesus-13.jpg",
   "Tete&Jesus-6.jpg",
   "Tete&Jesus-7.jpg",
   "Vane&Kley2024-3.jpg",
