@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
@@ -5,13 +6,13 @@ const services = [
   {
     title: "Portraits",
     desc: "Natural, intimate portraits with film-like color and soft grain.",
-    href: "/contact",
+    href: "/photography/portraits",
     tag: "Most requested",
   },
   {
     title: "Couples",
     desc: "Quiet moments, movement, and honest connection—no stiff posing.",
-    href: "/contact",
+    href: "/photography/couples",
     tag: "Story-driven",
   },
   {
@@ -40,108 +41,239 @@ const services = [
   },
 ];
 
+const portraits = [
+  "Ale1.jpg",
+  "Ale2.jpg",
+  "Ale3.jpg",
+  "Ale4.jpg",
+  "Ale5.jpg",
+  "Ale6.jpg",
+  "Eyla1.jpg",
+  "Eyla2.jpg",
+  "Eyla3.jpg",
+  "Litus1.jpg",
+  "Litus2.jpg",
+  "Litus3.jpg",
+  "Vane1.jpg",
+  "danababy1.jpg",
+  "dani1.jpg",
+  "dani2.jpg",
+  "dani3.jpg",
+  "dani4.jpg",
+  "dani5.jpg",
+  "kelly1.jpg",
+  "kelly2.jpg",
+  "kelly3.jpg",
+  "kelly4.jpg",
+  "kelly5.jpg",
+  "kelly6.jpg",
+];
+
+const couples = [
+  "Callie_pregnancy-114.jpg",
+  "Callie_pregnancy-115.jpg",
+  "Callie_pregnancy-124.jpg",
+  "Callie_pregnancy-85.jpg",
+  "Melissa&AlexWEDDING-563.jpg",
+  "Melissa&AlexWEDDING-720.jpg",
+  "Melissa&AlexWEDDING-89.jpg",
+  "Tete&Jesus-13.jpg",
+  "Tete&Jesus-6.jpg",
+  "Tete&Jesus-7.jpg",
+  "Vane&Kley2024-3.jpg",
+  "Vane&Kley2024B&W-1.jpg",
+  "Vane&Kley2024B&W-3.jpg",
+  "lindseyfamily-243.jpg",
+  "lindseyfamily-245.jpg",
+  "lindseyfamily-246.jpg",
+  "lindseyfamily-48.jpg",
+  "litus1.jpg",
+];
+
+const labelFromFile = (file: string) =>
+  file
+    .replace(".jpg", "")
+    .replace(/\d+/g, "")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/^./, (c) => c.toUpperCase());
+
 export default function PhotographyPage() {
+  const portraitPreview = "Eyla1.jpg";
+  const couplesPreview = "litus1.jpg";
+
   return (
-    <main className="mx-auto max-w-6xl px-6 py-16 md:py-24 space-y-14">
+    <main className="photo-page mx-auto max-w-6xl px-6 py-16 md:py-24 space-y-16">
       {/* INTRO */}
-      <section className="space-y-6">
-        <p className="text-xs tracking-[0.35em] uppercase text-black/50">
-          Photography • Miami • Travel
-        </p>
+      <section className="photo-hero">
+        <div className="photo-hero__content animate-rise">
+          <p className="photo-kicker">Photography • Miami • Travel</p>
+          <h1 className="photo-title">
+            Bohemian modern portraits,
+            <span> with light you can feel.</span>
+          </h1>
+          <p className="photo-lede">
+            Story-led sessions with soft film tones, textured light, and a calm, poetic pace.
+            Tell me the mood you want and I’ll shape the ritual around it.
+          </p>
 
-        <h1 className="text-4xl md:text-6xl leading-[1.05] tracking-tight">
-          Choose your story.
-        </h1>
+          <div className="photo-actions">
+            <Link href="/contact" className="photo-button photo-button--solid">
+              Contact / inquire
+            </Link>
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="photo-button photo-button--ghost"
+            >
+              Book a session →
+            </a>
+          </div>
 
-        <p className="max-w-2xl text-base md:text-lg text-black/65 leading-relaxed">
-          Bohemian, story-driven photography rooted in light, texture, and emotion.
-          Pick a category below and I’ll shape the session around what you want to feel.
-        </p>
+          <div className="photo-meta">
+            <span>Editorial portraits</span>
+            <span>Intimate couples</span>
+            <span>Destination stories</span>
+          </div>
+        </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full border border-black/15 bg-white/40 px-6 py-3 text-sm hover:border-black/25"
-          >
-            Contact / inquire
-          </Link>
-
-          <a
-            href={site.bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm text-black/70 hover:text-black"
-          >
-            Book a session →
-          </a>
+        <div className="photo-hero__media">
+          <div className="photo-hero__frame photo-hero__frame--tall">
+            <Image
+              src="/photography/portraits/Ale2.jpg"
+              alt="Portrait"
+              width={720}
+              height={960}
+              className="photo-hero__image"
+              priority
+            />
+          </div>
+          <div className="photo-hero__frame photo-hero__frame--short">
+            <Image
+              src="/photography/portraits/kelly2.jpg"
+              alt="Portrait"
+              width={720}
+              height={540}
+              className="photo-hero__image"
+            />
+          </div>
         </div>
       </section>
 
       {/* SERVICES GRID */}
-      <section className="space-y-6">
+      <section className="space-y-8">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-xs tracking-[0.35em] uppercase text-black/50">
-              Sessions
-            </p>
-            <h2 className="mt-2 text-2xl md:text-3xl tracking-tight">
-              What are you looking for?
-            </h2>
+            <p className="photo-kicker">Sessions</p>
+            <h2 className="photo-subtitle">What story are we telling?</h2>
           </div>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <Link
-              key={s.title}
-              href={s.href}
-              className="group rounded-3xl bg-white/35 ring-1 ring-black/10 p-7 hover:bg-white/50 transition"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <p className="text-xs tracking-[0.35em] uppercase text-black/45">
-                  {s.tag}
-                </p>
-                <span className="text-sm text-black/40 group-hover:text-black/70 transition">
-                  →
-                </span>
-              </div>
+        <div className="photo-service-grid">
+          {services.map((s, index) => {
+            if (s.title === "Portraits") {
+              return (
+                <Link
+                  key={s.title}
+                  href={s.href}
+                  className="photo-card photo-card--portraits photo-stagger"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <div className="photo-card__top">
+                    <p className="photo-card__tag">{s.tag}</p>
+                    <span className="photo-card__arrow">→</span>
+                  </div>
 
-              <h3 className="mt-3 text-xl tracking-tight">{s.title}</h3>
-              <p className="mt-2 text-sm text-black/60 leading-relaxed">
-                {s.desc}
-              </p>
+                  <h3 className="photo-card__title">{s.title}</h3>
+                  <p className="photo-card__desc">{s.desc}</p>
 
-              <div className="mt-6 h-32 rounded-2xl bg-black/5 ring-1 ring-black/10" />
-              <p className="mt-3 text-xs text-black/45">
-                Add a representative image here later.
-              </p>
-            </Link>
-          ))}
+                  {portraitPreview && (
+                    <div className="photo-card__preview">
+                      <Image
+                        src={`/photography/portraits/${portraitPreview}`}
+                        alt={`${labelFromFile(portraitPreview)} portrait`}
+                        width={520}
+                        height={680}
+                        className="photo-card__preview-image"
+                      />
+                    </div>
+                  )}
+                </Link>
+              );
+            }
+
+            if (s.title === "Couples") {
+              return (
+                <Link
+                  key={s.title}
+                  href={s.href}
+                  className="photo-card photo-card--portraits photo-stagger"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <div className="photo-card__top">
+                    <p className="photo-card__tag">{s.tag}</p>
+                    <span className="photo-card__arrow">→</span>
+                  </div>
+
+                  <h3 className="photo-card__title">{s.title}</h3>
+                  <p className="photo-card__desc">{s.desc}</p>
+
+                  {couplesPreview && (
+                    <div className="photo-card__preview">
+                      <Image
+                        src={`/photography/couples/${couplesPreview}`}
+                        alt={`${labelFromFile(couplesPreview)} couples preview`}
+                        width={520}
+                        height={680}
+                        className="photo-card__preview-image"
+                      />
+                    </div>
+                  )}
+                </Link>
+              );
+            }
+
+            return (
+              <Link
+                key={s.title}
+                href={s.href}
+                className="photo-card photo-stagger"
+                style={{ animationDelay: `${index * 80}ms` }}
+              >
+                <div className="photo-card__top">
+                  <p className="photo-card__tag">{s.tag}</p>
+                  <span className="photo-card__arrow">→</span>
+                </div>
+
+                <h3 className="photo-card__title">{s.title}</h3>
+                <p className="photo-card__desc">{s.desc}</p>
+
+                <div className="photo-card__glow" aria-hidden="true" />
+              </Link>
+            );
+          })}
         </div>
       </section>
 
       {/* SMALL CTA */}
-      <section className="rounded-3xl bg-white/35 ring-1 ring-black/10 p-10 md:p-12">
-        <h3 className="text-2xl md:text-3xl tracking-tight">
-          Not sure what category fits?
-        </h3>
-        <p className="mt-3 max-w-2xl text-black/65 leading-relaxed">
-          Tell me the vibe, the location, and what you want the photos to feel like.
-          I’ll recommend the best session type and keep it easy.
-        </p>
+      <section className="photo-cta">
+        <div>
+          <h3>Not sure what category fits?</h3>
+          <p>
+            Tell me the vibe, the location, and what you want the photos to feel like.
+            I’ll recommend the best session type and keep it easy.
+          </p>
+        </div>
 
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full border border-black/15 bg-white/60 px-6 py-3 text-sm hover:border-black/25"
-          >
+        <div className="photo-actions">
+          <Link href="/contact" className="photo-button photo-button--solid">
             Send details
           </Link>
           <a
             href={site.bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm text-black/70 hover:text-black"
+            className="photo-button photo-button--ghost"
           >
             Book a call →
           </a>
