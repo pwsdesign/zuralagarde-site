@@ -197,7 +197,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 .works-title {
-  font-family: "vintage-deco", sans-serif;
+  font-family: "mono45-headline", monospace;
   font-weight: 300;
   font-style: normal;
   text-transform: uppercase;
@@ -246,7 +246,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 .works-card__title {
-  font-family: "vintage-deco", sans-serif;
+  font-family: "mono45-headline", monospace;
   font-weight: 300;
   font-style: normal;
   text-transform: uppercase;
@@ -316,8 +316,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .works-card__meta {
   margin-top: 0.8rem;
-  font-family: "mixta-didone", serif;
-  font-weight: 200;
+  font-family: "logic-monospace", monospace;
+  font-weight: 700;
   font-style: normal;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -336,8 +336,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .works-card__desc {
   margin-top: 1rem;
-  font-family: "mixta-didone", serif;
-  font-weight: 200;
+  font-family: "logic-monospace", monospace;
+  font-weight: 700;
   font-style: normal;
   font-size: 0.98rem;
   line-height: 1.8;
