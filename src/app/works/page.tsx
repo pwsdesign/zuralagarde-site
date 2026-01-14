@@ -1,17 +1,42 @@
 import Link from "next/link";
 
+type WorkProject = {
+  title: string;
+  years: string;
+  medium: string;
+  description: string;
+  href?: string;
+  videoSrc?: string;
+};
+
 export default function WorksPage() {
-  const projects = [
+  const projects: WorkProject[] = [
     {
       title: "Fu: El Retorno",
       years: "2024",
       medium: "Photography, video",
+      description: "A return to origin—ritual, memory, and the quiet tension of coming home.",
       href: "/works/elretorno",
       videoSrc: "/projects/elretorno/elretorno.mp4",
     },
-    { title: "Dias de Luna", years: "2021–" },
-    { title: "Mitología de la Tangente", years: "2020" },
-    { title: "Pinhole Camera", years: "2019" },
+    {
+      title: "Dias de Luna",
+      years: "2021–",
+      medium: "Photography, installation, video",
+      description: "Lunar cycles as visual score—light, rhythm, and the body in motion.",
+    },
+    {
+      title: "Mitología de la Tangente",
+      years: "2020",
+      medium: "Photography",
+      description: "Fragments of myth rendered as quiet symbols and tactile studies.",
+    },
+    {
+      title: "Pinhole Camera",
+      years: "2019",
+      medium: "Photography, process",
+      description: "Analog studies of time, exposure, and the materiality of light.",
+    },
   ];
 
   return (
@@ -46,10 +71,10 @@ export default function WorksPage() {
               </p>
 
               <p className="works-card__desc">
-            {p.description ?? "Luego me avisas que ponemos aqui mi zura!"}
+                {p.description}
               </p>
 
-              {"videoSrc" in p && (
+              {p.videoSrc && (
                 <div className="works-card__media">
                   <video
                     className="works-card__video"
