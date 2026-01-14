@@ -90,7 +90,7 @@ export default function WorksPage() {
             </>
           );
 
-          if ("href" in p) {
+          if (p.href) {
             return (
               <Link
                 key={p.title}
