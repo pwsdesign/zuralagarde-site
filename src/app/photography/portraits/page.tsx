@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 const portraits = [
+  "Tete&Jesus-13.jpg",
+   "dani3.jpg",
   "Ale1.jpg",
   "Ale2.jpg",
   "Ale3.jpg",
@@ -21,7 +23,6 @@ const portraits = [
   "danababy1.jpg",
   "dani1.jpg",
   "dani2.jpg",
-  "dani3.jpg",
   "dani4.jpg",
   "dani5.jpg",
   "kelly1.jpg",
@@ -30,7 +31,6 @@ const portraits = [
   "kelly4.jpg",
   "kelly5.jpg",
   "kelly6.jpg",
-  "Tete&Jesus-13.jpg",
 ];
 
 const labelFromFile = (file: string) =>

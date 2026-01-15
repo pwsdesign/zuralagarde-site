@@ -10,7 +10,7 @@
 :root {
   /* Fork label fonts */
   --font-works: "gyst-variable", sans-serif;     /* Works label */
-  --font-photo: "acumin-variable", sans-serif;   /* Photography label + body */
+  --font-photo: "logic-monospace", monospace;   /* Photography label + body */
 
   /* Site typography mapping */
   --font-display: var(--font-works);
@@ -172,7 +172,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 /* Optional: route-specific body font if you add className="works-body" */
 .works-body {
-  font-family: "neue-kabel", sans-serif;
+  font-family: "logic-monospace", monospace;
   font-weight: 300;
   font-style: normal;
 }
@@ -198,18 +198,18 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .works-title {
   font-family: "mono45-headline", monospace;
-  font-weight: 300;
+  font-weight: 100;
   font-style: normal;
   text-transform: uppercase;
-  letter-spacing: 0.32em;
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  letter-spacing: 0.40em;
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
 }
 
 .works-intro {
-  font-family: "mixta-didone", serif;
-  font-weight: 200;
+  font-family: "logic-monospace", monospace;
+  font-weight: 100;
   font-style: normal;
-  font-size: 1.05rem;
+  font-size: .9rem;
   line-height: 1.7;
   color: var(--works-muted);
   max-width: 40rem;
@@ -247,10 +247,10 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .works-card__title {
   font-family: "mono45-headline", monospace;
-  font-weight: 300;
+  font-weight: 100;
   font-style: normal;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.30em;
   font-size: clamp(1.6rem, 3.2vw, 2.6rem);
   position: relative;
   z-index: 2;
@@ -317,7 +317,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .works-card__meta {
   margin-top: 0.8rem;
   font-family: "logic-monospace", monospace;
-  font-weight: 700;
+  font-weight: 300;
   font-style: normal;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -337,9 +337,9 @@ ul { list-style: none; padding: 0; margin: 0; }
 .works-card__desc {
   margin-top: 1rem;
   font-family: "logic-monospace", monospace;
-  font-weight: 700;
+  font-weight: 100;
   font-style: normal;
-  font-size: 0.98rem;
+  font-size: 0.80rem;
   line-height: 1.8;
   max-width: 42rem;
   color: rgba(59, 51, 44, 0.75);

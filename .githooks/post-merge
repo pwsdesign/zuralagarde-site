@@ -1,0 +1,3 @@
+#!/bin/sh
+export PATH="/Users/andrealeon/photo-site/.bin:$PATH"
+exec git lfs post-merge "$@"

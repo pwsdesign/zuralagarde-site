@@ -5,12 +5,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 const couples = [
+  "chadwick_brittany-42.jpg",
+  "chadwick_brittany-50.jpg",
   "Callie_pregnancy-114.jpg",
   "Callie_pregnancy-115.jpg",
   "Callie_pregnancy-124.jpg",
   "Callie_pregnancy-85.jpg",
   "Melissa&AlexWEDDING-563.jpg",
-  "Melissa&AlexWEDDING-720.jpg",
   "Melissa&AlexWEDDING-89.jpg",
   "Tete&Jesus-6.jpg",
   "Tete&Jesus-7.jpg",
@@ -20,8 +21,8 @@ const couples = [
   "lindseyfamily-243.jpg",
   "lindseyfamily-245.jpg",
   "lindseyfamily-246.jpg",
-  "lindseyfamily-48.jpg",
   "litus1.jpg",
+
 ];
 
 const labelFromFile = (file: string) =>
